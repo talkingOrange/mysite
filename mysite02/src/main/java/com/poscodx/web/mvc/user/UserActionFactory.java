@@ -22,10 +22,12 @@ public class UserActionFactory implements ActionFactory {
 			action = new LoginformAction();
 		} else if ("login".equals(actionName)) {
 			action = new LoginAction();
-		}else if ("updateform".equals(actionName)) {
-			action = new UpdateformAction();
 		}else if ("logout".equals(actionName)) {
 			action = new LogoutAction();
+		}else if ("updateform".equals(actionName)) {
+			action = new UpdateformAction();
+		}else if ("update".equals(actionName)) {
+			action = new UpdateAction();
 		}else {
 			// 메인 화면으로 포워딩 해주는 액션
 			action = new MainAction();
