@@ -18,10 +18,16 @@ public class UserActionFactory implements ActionFactory {
 
 		} else if ("joinsuccess".equals(actionName)) {
 			action = new JoinSuccessAction();
-		} else if("loginform".equals(actionName)){
+		} else if ("loginform".equals(actionName)) {
 			action = new LoginformAction();
-	}else {
-			//메인 화면으로 포워딩 해주는 액션
+		} else if ("login".equals(actionName)) {
+			action = new LoginAction();
+		}else if ("updateform".equals(actionName)) {
+			action = new UpdateformAction();
+		}else if ("logout".equals(actionName)) {
+			action = new LogoutAction();
+		}else {
+			// 메인 화면으로 포워딩 해주는 액션
 			action = new MainAction();
 		}
 		return action;
