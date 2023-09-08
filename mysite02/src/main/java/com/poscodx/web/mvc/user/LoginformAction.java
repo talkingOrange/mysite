@@ -9,12 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.poscodx.web.mvc.Action;
 import com.poscodx.web.mvc.utils.WebUtil;
 
-public class JoinFormAction implements Action {
+public class LoginformAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		
-		WebUtil.forward("user/joinform", request, response);
+		WebUtil.forward("user/loginform", request, response);
 	}
 
 }
