@@ -10,6 +10,7 @@ import org.apache.catalina.ant.jmx.JMXAccessorQueryTask;
 
 import com.poscodx.mysite.dao.UserDao;
 import com.poscodx.mysite.vo.UserVo;
+import com.poscodx.mysite.web.mvc.main.MainActionFactory;
 import com.poscodx.web.mvc.Action;
 import com.poscodx.web.mvc.user.JoinAction;
 import com.poscodx.web.mvc.user.JoinFormAction;
@@ -21,7 +22,11 @@ public class UserController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 
+		String actionName = request.getParameter("a");
+		Action action = new UserActionFactory().getAction(actionName);
+		action.execute(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
