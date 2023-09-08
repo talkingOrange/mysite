@@ -6,6 +6,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.ant.jmx.JMXAccessorQueryTask;
+
+import com.poscodx.mysite.dao.UserDao;
+import com.poscodx.mysite.vo.UserVo;
+
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -17,7 +22,23 @@ public class UserController extends HttpServlet {
 		
 		if("joinform".equals(action)) {
 			request.getRequestDispatcher("/WEB-INF/views/user/joinform.jsp").forward(request, response);
-		} 
+		} else if("join".equals(action)) {
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+			String gender = request.getParameter("gender");
+			
+			//데이터 전달의 확인
+			//System.out.println(name + " : " + email + " : " + password  + " : " + gender);
+		
+			UserVo userVo = new UserVo();
+			userVo.setName(name);
+			userVo.setEmail(email);
+			userVo.setPassword(password);
+			userVo.setGender(gender);
+			
+			new UserDao().insert(userVo);
+		}
 		
 	}
 
