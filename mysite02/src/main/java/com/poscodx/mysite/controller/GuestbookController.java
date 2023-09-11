@@ -36,12 +36,11 @@ public class GuestbookController extends HttpServlet {
 			response.sendRedirect("/mysite02/guestbook");
 
 		} else if ("delete".equals(action)) {
+			String stringNo = request.getParameter("no");
+			Long no = Long.parseLong(stringNo);
 			String password = request.getParameter("password");
 
-			GuestbookVo vo = new GuestbookVo();
-			vo.setPassword(password);
-
-			new GuestbookDao().deleteByPassword(password);
+			new GuestbookDao().deleteByNoAndPassword(no, password);
 			response.sendRedirect("/mysite02/guestbook");
 		} else if ("deleteform".equals(action)) {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/guestbook/deleteform.jsp");

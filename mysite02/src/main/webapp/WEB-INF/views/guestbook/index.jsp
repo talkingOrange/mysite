@@ -54,7 +54,7 @@ pageContext.setAttribute("newline", "\n");
 									<td>${vo.name }</td>
 									<td>${vo.date }</td>
 									<td><a
-										href="${pageContext.request.contextPath }/guestbook?a=deleteform">삭제</a></td>
+										href="${pageContext.request.contextPath }/guestbook?a=deleteform&no=${vo.no }">삭제</a></td>
 								</tr>
 								<tr>
 									<td colspan=4>${fn:replace(vo.contents, newline, "<br>") }</td>
