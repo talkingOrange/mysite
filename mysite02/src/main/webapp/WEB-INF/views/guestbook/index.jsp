@@ -13,8 +13,6 @@
 pageContext.setAttribute("newline", "\n");
 %>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
