@@ -4,22 +4,23 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="${pageContext.request.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/board.css"
+	rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="container">
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<div id="content">
 			<div id="board">
-				<form id="search_form" action="${pageContext.request.contextPath }/board" method="post">
-					<input type="text" id="kwd" name="kwd" value="">
-					<input type="submit" value="찾기">
+				<form id="search_form"
+					action="${pageContext.request.contextPath }/board" method="post">
+					<input type="text" id="kwd" name="kwd" value=""> <input
+						type="submit" value="찾기">
 				</form>
 				<table class="tbl-ex">
 					<tr>
@@ -30,18 +31,26 @@
 						<th>작성일</th>
 						<th>&nbsp;</th>
 					</tr>
-					<c:forEach items="${list }" var="vo" varStatus="status">				
-					<tr>
-						<td>${vo.no }</td>
-						<td style = "padding-left:${(1-1)*30 }px"><a href="${pageContext.request.contextPath }/board?a=view">${vo.title }</a></td>
-						<td>${vo.userName}</td>
-						<td>${vo.hit }</td>
-						<td>${vo.date }</td>
-						<td><a href="" class="del">삭제</a></td>
-					</tr>
+					<c:forEach items="${list }" var="vo" varStatus="status">
+						<tr>
+							<td>${vo.no }</td>
+							<td style="padding-left:${(1-1)*30 }px"><a
+								href="${pageContext.request.contextPath }/board?a=view">${vo.title }</a></td>
+							<td>${vo.userName}</td>
+							<td>${vo.hit }</td>
+							<td>${vo.date }</td>
+							<c:choose>
+								<c:when test="${authUser.no eq vo.userNo }">
+									<td><a href="" class="del">삭제</a></td>
+								</c:when>
+								<c:otherwise>
+									<td></td>
+								</c:otherwise>
+							</c:choose>
+						</tr>
 					</c:forEach>
 				</table>
-				
+
 				<!-- pager 추가 -->
 				<div class="pager">
 					<ul>
@@ -53,15 +62,22 @@
 						<li>5</li>
 						<li><a href="">▶</a></li>
 					</ul>
-				</div>					
+				</div>
 				<!-- pager 추가 -->
-				
+
 				<div class="bottom">
-					<a href="${pageContext.request.contextPath }/board?a=writeform" id="new-book">글쓰기</a>
-				</div>				
+					<c:choose>
+						<c:when test="${empty authUser }">
+						</c:when>
+						<c:otherwise>
+							<a href="${pageContext.request.contextPath }/board?a=writeform"
+								id="new-book">글쓰기</a>
+						</c:otherwise>
+					</c:choose>
+				</div>
 			</div>
 		</div>
-<c:import url="/WEB-INF/views/includes/navigation.jsp" />
+		<c:import url="/WEB-INF/views/includes/navigation.jsp" />
 		<c:import url="/WEB-INF/views/includes/footer.jsp" />
 	</div>
 </body>
