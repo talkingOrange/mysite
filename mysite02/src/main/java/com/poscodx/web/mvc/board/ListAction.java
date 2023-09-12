@@ -18,7 +18,19 @@ public class ListAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-         List<BoardVo> list = new BoardDao().findAll();
+		// 번호, 제목, 내용, 조회수, 작성일, gNo, oNo, Depth, userNo 가져오기
+		List<BoardVo> list = new BoardDao().findAll();
+
+		// userNo를 이용하여 userName 담기
+		for (BoardVo board : list) {
+			Long userNo = board.getUserNo();
+			UserVo user = new UserDao().findByNo(userNo);
+			if (user != null) {
+				board.setUserName(user.getName());
+			}
+		}
+
+		// list로 attribute
 		request.setAttribute("list", list);
 		WebUtil.forward("board/list", request, response);
 

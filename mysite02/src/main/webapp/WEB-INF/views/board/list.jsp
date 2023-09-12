@@ -34,7 +34,7 @@
 					<tr>
 						<td>${vo.no }</td>
 						<td style = "padding-left:${(1-1)*30 }px"><a href="">${vo.title }</a></td>
-						<td>${vo.userNo}</td>
+						<td>${vo.userName}</td>
 						<td>${vo.hit }</td>
 						<td>${vo.date }</td>
 						<td><a href="" class="del">삭제</a></td>
