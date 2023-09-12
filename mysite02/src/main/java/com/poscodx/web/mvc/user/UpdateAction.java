@@ -29,9 +29,8 @@ public class UpdateAction implements Action {
 		
 		if(new UserDao().update(userVo)) {
 			UserVo updateVo = new UserDao().findByEmailAndPassword(email, password);
-			System.out.println(123);
 			HttpSession session = request.getSession();
-			session.setAttribute("authUser", updateVo);
+			session.setAttribute("userVo", updateVo);
 		}
 		
 		WebUtil.forward("user/updateform", request, response);

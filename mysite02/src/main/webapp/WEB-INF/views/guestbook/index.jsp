@@ -45,16 +45,15 @@ pageContext.setAttribute("newline", "\n");
 					</table>
 				</form>
 				<ul>
-					<c:forEach items="${list }" var="vo">
-
+					<c:set var="count" value="${fn:length(list) }" />
+					<c:forEach items="${list }" var="vo" varStatus="status">
 						<li>
 							<table>
 								<tr>
-									<td>${vo.no }</td>
+									<td>${count - status.index }</td>
 									<td>${vo.name }</td>
 									<td>${vo.date }</td>
-									<td><a
-										href="${pageContext.request.contextPath }/guestbook?a=deleteform&no=${vo.no }">삭제</a></td>
+									<td><a href="${pageContext.request.contextPath }/guestbook?a=deleteform&no=${vo.no }">삭제</a></td>
 								</tr>
 								<tr>
 									<td colspan=4>${fn:replace(vo.contents, newline, "<br>") }</td>

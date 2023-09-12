@@ -7,9 +7,6 @@
 <%@page import="com.poscodx.mysite.vo.UserVo"%>
 <%@page import="com.poscodx.mysite.dao.UserDao"%>
 
-
-<c:set var="userVo" value="${UserDao().findByNo(authUser.no)}" />
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +25,7 @@
 					action="${pageContext.request.contextPath }/user">
 					<input type="hidden" name="a" value="update"> <label
 						class="block-label" for="name">이름</label> <input id="name"
-						name="name" type="text" value="${authUser.name}"> <label
+						name="name" type="text" value="${userVo.name}"> <label
 						class="block-label" for="email">이메일</label> <input name="email"
 						type="hidden" value="${userVo.email}">
 					<h4>${userVo.email}</h4>
