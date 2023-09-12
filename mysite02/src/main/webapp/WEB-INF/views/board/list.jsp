@@ -31,9 +31,10 @@
 						<th>작성일</th>
 						<th>&nbsp;</th>
 					</tr>
+					<c:set var="count" value="${fn:length(list) }" />
 					<c:forEach items="${list }" var="vo" varStatus="status">
 						<tr>
-							<td>${vo.no }</td>
+							<td>${count - status.index }</td>
 							<td style="padding-left:${(1-1)*30 }px"><a
 								href="${pageContext.request.contextPath }/board?a=view&no=${vo.no }">${vo.title }</a></td>
 							<td>${vo.userName}</td>
