@@ -1,7 +1,6 @@
 package com.poscodx.web.mvc.board;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,13 +11,12 @@ import com.poscodx.mysite.vo.BoardVo;
 import com.poscodx.web.mvc.Action;
 import com.poscodx.web.utils.WebUtil;
 
-public class viewAction implements Action {
+public class modifyformAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
 		String param = request.getParameter("no");
-
+		
 		if (param != null) {
 			Long no = Long.parseLong(param);
 			BoardVo boardVo = new BoardDao().findByNo(no);
@@ -28,7 +26,7 @@ public class viewAction implements Action {
 			System.out.println("error: \"no\" is null");
 		}
 
-		WebUtil.forward("board/view", request, response);
+		WebUtil.forward("board/modify", request, response);
 	}
 
 }

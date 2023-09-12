@@ -35,7 +35,7 @@
 						<tr>
 							<td>${vo.no }</td>
 							<td style="padding-left:${(1-1)*30 }px"><a
-								href="${pageContext.request.contextPath }/board?a=view">${vo.title }</a></td>
+								href="${pageContext.request.contextPath }/board?a=view&no=${vo.no }">${vo.title }</a></td>
 							<td>${vo.userName}</td>
 							<td>${vo.hit }</td>
 							<td>${vo.date }</td>

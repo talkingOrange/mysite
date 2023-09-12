@@ -13,7 +13,7 @@ public class writeFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		WebUtil.forward("board/writeform", request, response);
+		WebUtil.forward("board/write", request, response);
 	}
 
 }
