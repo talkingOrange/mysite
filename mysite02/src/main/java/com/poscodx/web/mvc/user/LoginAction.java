@@ -20,7 +20,6 @@ public class LoginAction implements Action {
 		String password = request.getParameter("password");
 		
 		UserVo userVo = new UserDao().findByEmailAndPassword(email, password);
-		System.out.println(userVo);
 		//잘못된 비번이 들어오면, userVo = null
 		//로그인 실패
 		if(userVo == null) {

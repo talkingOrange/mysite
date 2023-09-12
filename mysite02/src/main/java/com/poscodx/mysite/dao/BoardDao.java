@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.poscodx.mysite.vo.BoardVo;
+import com.poscodx.mysite.vo.UserVo;
 
 
 public class BoardDao {
@@ -94,6 +95,42 @@ public class BoardDao {
 			}
 		}
 		
+		return result;
+	}
+	
+	public Boolean insert(BoardVo boardVo) {
+		boolean result = false;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+
+			String sql = "INSERT INTO board SELECT null,  ?, ?, 0, NOW(), "
+					+ "COALESCE(MAX(g_no), 1) + 1, 1, 1, ? FROM board";
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, boardVo.getTitle());
+			pstmt.setString(2, boardVo.getContents());
+			pstmt.setLong(3, boardVo.getUserNo());
+
+			int count = pstmt.executeUpdate();
+
+			result = count == 1;
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		return result;
 	}
 	
