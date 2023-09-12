@@ -13,10 +13,12 @@ public class BoardActionFactory implements ActionFactory {
 			action = new DeleteAction();
 		} else if("deleteform".equals(actionName)) {
 			action = new DeleteFormAction();
-		} else if("add".equals(actionName)) {
-			action = new AddAction();
-		} else if("addform".equals(actionName)) {
-			action = new AddFormAction();
+		} else if("write".equals(actionName)) {
+			action = new writeAction();
+		} else if("writeform".equals(actionName)) {
+			action = new writeFormAction();
+		} else if("view".equals(actionName)) {
+			action = new viewAction();
 		} else {
 			action = new ListAction();
 		}

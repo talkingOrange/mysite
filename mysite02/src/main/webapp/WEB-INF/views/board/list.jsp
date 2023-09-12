@@ -33,7 +33,7 @@
 					<c:forEach items="${list }" var="vo" varStatus="status">				
 					<tr>
 						<td>${vo.no }</td>
-						<td style = "padding-left:${(1-1)*30 }px"><a href="">${vo.title }</a></td>
+						<td style = "padding-left:${(1-1)*30 }px"><a href="${pageContext.request.contextPath }/board?a=view">${vo.title }</a></td>
 						<td>${vo.userName}</td>
 						<td>${vo.hit }</td>
 						<td>${vo.date }</td>
@@ -57,8 +57,7 @@
 				<!-- pager 추가 -->
 				
 				<div class="bottom">
-					<a href="" id="new-book">글쓰기</a>
-					<a href="" id="new-book" style="margin-right:10px">글쓰기</a>
+					<a href="${pageContext.request.contextPath }/board?a=writeform" id="new-book">글쓰기</a>
 				</div>				
 			</div>
 		</div>

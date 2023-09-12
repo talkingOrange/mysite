@@ -8,11 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.poscodx.web.mvc.Action;
 
-public class AddAction implements Action {
+public class writeAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		// TODO Auto-generated method stub
 
 	}
 
