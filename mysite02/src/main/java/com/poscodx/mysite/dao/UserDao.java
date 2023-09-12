@@ -68,7 +68,7 @@ public class UserDao {
 		try {
 			conn = getConnection();
 
-			String sql = "select no, name from user where email = ? and password = password(?)";
+			String sql = "select no, name, email, gender from user where email = ? and password = password(?)";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, email);
@@ -79,10 +79,14 @@ public class UserDao {
 			if (rs.next()) {
 				Long no = rs.getLong(1);
 				String name = rs.getString(2);
+				String email2 = rs.getString(3);
+				String gender = rs.getString(4);
 
 				userVo = new UserVo();
 				userVo.setNo(no);
 				userVo.setName(name);
+				userVo.setName(email2);
+				userVo.setName(gender);
 			}
 
 		} catch (SQLException e) {
@@ -113,7 +117,7 @@ public class UserDao {
 		try {
 			conn = getConnection();
 
-			String sql = "select email, gender from user where no = ?";
+			String sql = "select name, email, gender from user where no = ?";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setLong(1, no);
@@ -121,10 +125,12 @@ public class UserDao {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				String email = rs.getString(1);
-				String gender = rs.getString(2);
+				String name = rs.getString(1);
+				String email = rs.getString(2);
+				String gender = rs.getString(3);
 
 				userVo = new UserVo();
+				userVo.setName(name);
 				userVo.setEmail(email);
 				userVo.setGender(gender);
 			}
