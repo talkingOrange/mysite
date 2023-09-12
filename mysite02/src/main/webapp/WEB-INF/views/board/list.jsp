@@ -35,14 +35,28 @@
 					<c:forEach items="${list }" var="vo" varStatus="status">
 						<tr>
 							<td>${count - status.index }</td>
-							<td style="padding-left:${(1-1)*30 }px"><a
-								href="${pageContext.request.contextPath }/board?a=view&no=${vo.no }">${vo.title }</a></td>
+							<td style="padding-left:${(1-vo.oNo)*30 }px">
+								<div style="display: flex">
+
+									<c:choose>
+										<c:when test='${vo.oNo ne 1}'>
+											<div class="reply"></div>
+										</c:when>
+									</c:choose>
+									<div>
+										<a
+											href="${pageContext.request.contextPath }/board?a=view&no=${vo.no }">${vo.title }</a>
+									</div>
+								</div>
+							</td>
 							<td>${vo.userName}</td>
 							<td>${vo.hit }</td>
 							<td>${vo.date }</td>
 							<c:choose>
 								<c:when test="${authUser.no eq vo.userNo }">
-									<td><a href="${pageContext.request.contextPath }/board?a=delete&no=${vo.no }" class="del">삭제</a></td>
+									<td><a
+										href="${pageContext.request.contextPath }/board?a=delete&no=${vo.no }"
+										class="del">삭제</a></td>
 								</c:when>
 								<c:otherwise>
 									<td></td>

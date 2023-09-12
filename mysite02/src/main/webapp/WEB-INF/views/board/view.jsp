@@ -41,7 +41,7 @@ pageContext.setAttribute("newline", "\n");
 				</table>
 				<div class="bottom">
 					<a href="${pageContext.request.contextPath }/board">글목록</a> <a
-						href="${pageContext.request.contextPath }/board?a=modifyform&no=${boardVo.no }">답글달기</a>
+						href="${pageContext.request.contextPath }/board?a=writeform">답글달기</a>
 
 					<c:choose>
 						<c:when test='${boardVo.userNo eq authUser.no}'>
