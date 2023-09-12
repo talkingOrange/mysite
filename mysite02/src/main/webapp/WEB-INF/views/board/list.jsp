@@ -41,7 +41,7 @@
 							<td>${vo.date }</td>
 							<c:choose>
 								<c:when test="${authUser.no eq vo.userNo }">
-									<td><a href="" class="del">삭제</a></td>
+									<td><a href="${pageContext.request.contextPath }/board?a=delete&no=${vo.no }" class="del">삭제</a></td>
 								</c:when>
 								<c:otherwise>
 									<td></td>
