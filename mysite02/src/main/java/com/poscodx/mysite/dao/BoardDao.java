@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.poscodx.mysite.vo.BoardVo;
+import com.poscodx.mysite.vo.PagingVo;
 import com.poscodx.mysite.vo.UserVo;
 
 public class BoardDao {
@@ -27,7 +28,7 @@ public class BoardDao {
 		return conn;
 	}
 
-	public List<BoardVo> findAll() {
+	public List<BoardVo> findAll(int page, int limit) {
 		List<BoardVo> result = new ArrayList<>();
 
 		Connection conn = null;
@@ -38,10 +39,12 @@ public class BoardDao {
 			conn = getConnection();
 
 			// 3. SQL 준비
-			String sql = " select * from board order by g_no DESC, o_no ASC";
+			String sql = " select * from board order by g_no DESC, o_no ASC limit ?,?";
 			pstmt = conn.prepareStatement(sql);
 
 			// 4. binding
+			pstmt.setInt(1, (page-1)*limit );
+			pstmt.setInt(2, limit);
 
 			// 5. SQL 실행
 			rs = pstmt.executeQuery();
@@ -93,6 +96,8 @@ public class BoardDao {
 
 		return result;
 	}
+	
+	
 
 	public BoardVo findByNo(Long no) {
 		BoardVo vo = null;

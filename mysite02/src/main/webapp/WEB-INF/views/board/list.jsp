@@ -34,7 +34,7 @@
 					<c:set var="count" value="${fn:length(list) }" />
 					<c:forEach items="${list }" var="vo" varStatus="status">
 						<tr>
-							<td>${count - status.index }</td>
+							<td>${(paging.totalCount - ((paging.page -1) * paging.limit ))  - status.index}</td>
 							<td style="padding-left:${(vo.oNo-1)*30 }px">
 								<div style="display: flex">
 
@@ -69,13 +69,23 @@
 				<!-- pager 추가 -->
 				<div class="pager">
 					<ul>
-						<li><a href="">◀</a></li>
-						<li><a href="">1</a></li>
-						<li class="selected">2</li>
-						<li><a href="">3</a></li>
-						<li>4</li>
-						<li>5</li>
-						<li><a href="">▶</a></li>
+						<c:if test="${paging.prev}">
+							<li><a
+								href="${pageContext.request.contextPath }/board?page=${paging.beginPage-1}">◀</a></li>
+						</c:if>
+						<c:forEach begin="${paging.beginPage}"
+								end="${paging.endPage}" step="1" var="index">
+								<c:choose>
+									<c:when test="${paging.page==index}"><li class="selected"> ${index}</li></c:when>
+									<c:otherwise>
+										<li><a href="${pageContext.request.contextPath }/board?page=${index}">${index}</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						<c:if test="${paging.next}">
+							<li><a href="${pageContext.request.contextPath }/board?page=${paging.endPage+1}">▶</a></li>
+						</c:if>
+
 					</ul>
 				</div>
 				<!-- pager 추가 -->

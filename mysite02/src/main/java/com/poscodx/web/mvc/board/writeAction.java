@@ -31,12 +31,9 @@ public class writeAction implements Action {
 		boardVo.setTitle(title);
 		boardVo.setContents(content);
 		
-
 		// session을 통해 userNo를 얻어옴.
 		session = request.getSession(true);
 		UserVo user = (UserVo) session.getAttribute("authUser");
-
-
 
 		// user의 정보가 null인 경우, login 화면으로 이동
 		if (user != null) {
