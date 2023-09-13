@@ -17,29 +17,56 @@ public class writeAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		// String param = request.getParameter("no");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		
+
+		// 세션을 통해 "no" 파라미터 값을 얻어옴
+		HttpSession session = request.getSession();
+		String param = (String) session.getAttribute("param");
+
+		System.out.println("param2" + param);
+
 		BoardVo boardVo = new BoardVo();
 		boardVo.setTitle(title);
 		boardVo.setContents(content);
-	
-		// session을 통해 userNo를 얻어옴.
-		HttpSession session = request.getSession(true);
-		UserVo user = (UserVo) session.getAttribute("authUser");
 		
+
+		// session을 통해 userNo를 얻어옴.
+		session = request.getSession(true);
+		UserVo user = (UserVo) session.getAttribute("authUser");
+
+
+
 		// user의 정보가 null인 경우, login 화면으로 이동
 		if (user != null) {
-		    Long userNo = user.getNo(); 
-		    boardVo.setUserNo(userNo);
-		    System.out.println(boardVo);
-		    new BoardDao().insert(boardVo);
-		    response.sendRedirect(request.getContextPath() + "/board");
+			Long userNo = user.getNo();
+			boardVo.setUserNo(userNo);
+			if (param != null) {
+				Long no = Long.parseLong(param);
+				boardVo.setNo(no);
+				BoardVo parentWrite = new BoardDao().findByNo(no);
+				Long gNo = parentWrite.getgNo();
+				Long oNo = parentWrite.getoNo();
+				Long depth = parentWrite.getDepth();
+				
+				boardVo.setgNo(gNo);
+				boardVo.setoNo(oNo);
+				boardVo.setDepth(depth);
+				
+				System.out.println(parentWrite);
+				
+			} else {
+				System.out.println("param information not found in session.");
+			}
+			new BoardDao().insert(boardVo);
+			System.out.println(boardVo);
+			response.sendRedirect(request.getContextPath() + "/board");
 		} else {
-		    System.out.println("User's information not found in session.");
-		    response.sendRedirect(request.getContextPath() + "/user?a=loginform");
+			System.out.println("User's information not found in session.");
+			response.sendRedirect(request.getContextPath() + "/user?a=loginform");
 		}
-		   
+
 	}
 
 }

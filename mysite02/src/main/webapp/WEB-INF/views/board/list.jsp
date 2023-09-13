@@ -35,7 +35,7 @@
 					<c:forEach items="${list }" var="vo" varStatus="status">
 						<tr>
 							<td>${count - status.index }</td>
-							<td style="padding-left:${(1-vo.oNo)*30 }px">
+							<td style="padding-left:${(vo.oNo-1)*30 }px">
 								<div style="display: flex">
 
 									<c:choose>

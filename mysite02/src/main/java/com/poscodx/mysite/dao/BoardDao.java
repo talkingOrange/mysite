@@ -104,7 +104,7 @@ public class BoardDao {
 		try {
 			conn = getConnection();
 
-			String sql = "select no, title, contents, user_no from board where no=?";
+			String sql = "select * from board where no=?";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setLong(1, no);
@@ -117,7 +117,12 @@ public class BoardDao {
 				vo.setNo(rs.getLong(1));
 				vo.setTitle(rs.getString(2));
 				vo.setContents(rs.getString(3));
-				vo.setUserNo(rs.getLong(4));
+				vo.setHit(rs.getLong(4));
+				vo.setDate(rs.getString(5));
+				vo.setgNo(rs.getLong(6));
+				vo.setoNo(rs.getLong(7));
+				vo.setDepth(rs.getLong(8));
+				vo.setUserNo(rs.getLong(9));
 			}
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
@@ -148,13 +153,27 @@ public class BoardDao {
 		try {
 			conn = getConnection();
 
-			String sql = "INSERT INTO board SELECT null,  ?, ?, 0, NOW(), "
-					+ "COALESCE(MAX(g_no), 1) + 1, 1, 1, ? FROM board";
-			pstmt = conn.prepareStatement(sql);
+			if (boardVo.getNo() == null) {
+				String sql = "INSERT INTO board SELECT null,  ?, ?, 0, NOW(), "
+						+ "COALESCE(MAX(g_no), 1) + 1, 1, 1, ? FROM board";
+				pstmt = conn.prepareStatement(sql);
 
-			pstmt.setString(1, boardVo.getTitle());
-			pstmt.setString(2, boardVo.getContents());
-			pstmt.setLong(3, boardVo.getUserNo());
+				pstmt.setString(1, boardVo.getTitle());
+				pstmt.setString(2, boardVo.getContents());
+				pstmt.setLong(3, boardVo.getUserNo());
+			} else {
+				String sql = "INSERT INTO board values(null,  ?, ?, 0, NOW(), "
+						+ "?, ?, ?, ?)";
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, boardVo.getTitle());
+				pstmt.setString(2, boardVo.getContents());
+				pstmt.setLong(3, boardVo.getgNo());
+				pstmt.setLong(4, boardVo.getoNo() + 1);
+				pstmt.setLong(5, boardVo.getDepth()+1);
+				pstmt.setLong(6, boardVo.getUserNo());
+				
+			}
 
 			int count = pstmt.executeUpdate();
 
@@ -205,40 +224,40 @@ public class BoardDao {
 			}
 		}
 	}
-	
+
 	public Boolean deleteByNo(Long no) {
 		boolean result = false;
-		
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		
+
 		try {
 			conn = getConnection();
-			
+
 			String sql = "delete from board where no = ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setLong(1, no);
-			
+
 			int count = pstmt.executeUpdate();
-			
+
 			result = count == 1;
 		} catch (SQLException e) {
 			System.out.println("Error:" + e);
 		} finally {
 			try {
-				if(pstmt != null) {
+				if (pstmt != null) {
 					pstmt.close();
 				}
-				
-				if(conn != null) {
+
+				if (conn != null) {
 					conn.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		
-		return result;		
+
+		return result;
 	}
 
 }

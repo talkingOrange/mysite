@@ -21,6 +21,8 @@ public class modifyAction implements Action {
 		String title = request.getParameter("title");
 		String contents = request.getParameter("content");
 		
+		System.out.println(param);
+		
 		if (param != null) {
 			Long no = Long.parseLong(param);
 			
