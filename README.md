@@ -75,9 +75,20 @@
 <img src="https://github.com/talkingOrange/mysite/assets/88815795/784a17ec-4b53-43fa-b125-e507228353ce" width="47%">
 <img src="https://github.com/talkingOrange/mysite/assets/88815795/3354ecf1-61ea-4c20-a81b-a429291c9b9c" width="47%">
 
+- 취소 버튼 클릭 시, /board 페이지로 이동 ✅
+ 
+---
+
+#### 👉 글 수정: mysite/board?a=modifyform&no=?
 
 
+- 수정 버튼 클릭 시, /board?a=modify&no=? 페이지로 이동 후 수정글 확인 ✅
 
+<img src="https://github.com/talkingOrange/mysite/assets/88815795/c26a7795-2acb-45e0-b065-b45a116154aa" width="47%">
+<img src="https://github.com/talkingOrange/mysite/assets/88815795/c00a931c-754b-4269-989b-0891d434de1d" width="47%">
 
+- 취소 버튼 클릭 시, /board?a=view&no=? 페이지로 이동 ✅
+ 
+---
 
 
