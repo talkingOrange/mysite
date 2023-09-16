@@ -32,6 +32,8 @@ public class modifyAction implements Action {
 			boardVo.setNo(no);
 			
 			new BoardDao().update(boardVo);
+			//userNo도 같이 넘겨 주어야 글 수정이 계속 뜸.
+			boardVo = new BoardDao().findByNo(no);
 			request.setAttribute("boardVo", boardVo);
 
 		} else {

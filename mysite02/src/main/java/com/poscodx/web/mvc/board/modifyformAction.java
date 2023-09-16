@@ -23,7 +23,6 @@ public class modifyformAction implements Action {
 			Long no = Long.parseLong(param);
 			BoardVo boardVo = new BoardDao().findByNo(no);
 			request.setAttribute("boardVo", boardVo);
-
 		} else {
 			System.out.println("error: \"no\" is null");
 		}

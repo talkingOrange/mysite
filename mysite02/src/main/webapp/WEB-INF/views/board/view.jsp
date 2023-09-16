@@ -47,6 +47,8 @@ pageContext.setAttribute("newline", "\n");
 							<a
 								href="${pageContext.request.contextPath }/board?a=modifyform&no=${boardVo.no }">글수정</a>
 						</c:when>
+					</c:choose>
+					<c:choose>
 						<c:when test='${!empty authUser }'>
 							<a
 								href="${pageContext.request.contextPath }/board?a=writeform&no=${boardVo.no }">답글달기</a>

@@ -229,6 +229,36 @@ public class BoardDao {
 			}
 		}
 	}
+	
+
+	public void updateHit(Long hit, Long no) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+
+			String sql = "update board set hit=? where no=?";
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setLong(1, hit +1);
+			pstmt.setLong(2, no);
+
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	public Boolean deleteByNo(Long no) {
 		boolean result = false;

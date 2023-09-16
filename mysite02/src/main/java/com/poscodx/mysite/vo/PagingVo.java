@@ -103,11 +103,9 @@ public class PagingVo {
 
 		// 마지막으로 보일 페이지: 보일 페이지 양에
 		endPage = ((int) Math.ceil(page / (double) pagination)) * pagination;
-		System.out.println("endPage : " + endPage);
-System.out.println("현재페이지" + page);
+
 		// 시작 페이지
 		beginPage = endPage - (pagination - 1);
-		System.out.println("beginPage : " + beginPage);
 
 		// 총 페이지 개수
 		int totalPage = (int) Math.ceil(totalCount / (double) limit);
@@ -120,10 +118,6 @@ System.out.println("현재페이지" + page);
 			next = true;
 		}
 		prev = (beginPage == 1) ? false : true;
-		System.out.println("endPage : " + endPage);
-		System.out.println("totalPage : " + totalPage);
-
-		System.out.println("===================");
 	}
 
 }

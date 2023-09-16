@@ -25,7 +25,7 @@ public class ListAction implements Action {
 		// param을 통해 받아온 page 번호를 통해 sql의 limit를 조절한다.
 		PagingVo paging = new PagingVo();
 		String param = request.getParameter("page");
-		System.out.println(param);
+
 		int page = 1; //게시판 클릭 시에는 page param이 없어서 null임.
 		if(param != null) {
 			page = Integer.parseInt(param);
@@ -35,8 +35,6 @@ public class ListAction implements Action {
 
 		// 번호, 제목, 내용, 조회수, 작성일, gNo, oNo, Depth, userNo 가져오기
 		List<BoardVo> list = new BoardDao().findAll(paging.getPage(), paging.getLimit());
-		System.out.println("limit의 page"+paging.getPage());
-		System.out.println("limit의 limit"+paging.getLimit());
 		
 		
 		// userNo를 이용하여 userName 담기

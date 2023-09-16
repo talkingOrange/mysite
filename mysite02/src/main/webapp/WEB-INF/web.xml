@@ -5,7 +5,7 @@
 	version="2.5">
 	<display-name>mysite02</display-name>
 
-<!-- Context Parameter : 어디서나 접근 가능한 것. 전역. -->
+	<!-- Context Parameter : 어디서나 접근 가능한 것. 전역. -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/applicationContext.xml</param-value>
@@ -85,7 +85,10 @@
 		<url-pattern>/board</url-pattern>
 	</servlet-mapping>
 
-
+	<error-page>
+		<error-code>404</error-code>
+		<location>/main</location>
+	</error-page>
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
