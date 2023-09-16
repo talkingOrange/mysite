@@ -91,4 +91,15 @@
  
 ---
 
+#### 👉 글 삭제: mysite/board?page=?
+
+- 해당 사용자에게만 삭제 버튼 생성 ✅
+
+<img src="https://github.com/talkingOrange/mysite/assets/88815795/dd55573c-cd2e-42d2-bef5-7cedf98d97ff" width="95%">
+
+- 삭제 ✅
+
+![삭제gif](https://github.com/talkingOrange/mysite/assets/88815795/a6bfa771-0174-4152-bc91-d720f3068362)
+
+
 
