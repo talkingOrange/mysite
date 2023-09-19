@@ -40,7 +40,7 @@ pageContext.setAttribute("newline", "\n");
 					</tr>
 				</table>
 				<div class="bottom">
-					<a href="${pageContext.request.contextPath }/board">글목록</a> <a
+					<a href="${pageContext.request.contextPath }/board?page=1">글목록</a> <a
 						href="${pageContext.request.contextPath }/board?a=writeform&no=${boardVo.no }">답글달기</a>
 
 					<c:choose>

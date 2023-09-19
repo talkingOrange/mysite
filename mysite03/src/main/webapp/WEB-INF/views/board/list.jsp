@@ -45,7 +45,7 @@
 									</c:choose>
 									<div>
 										<a
-											href="${pageContext.request.contextPath }/board?a=view&no=${vo.no }">${vo.title }</a>
+											href="${pageContext.request.contextPath }/board/view?no=${vo.no }">${vo.title }</a>
 									</div>
 								</div>
 							</td>
@@ -55,7 +55,7 @@
 							<c:choose>
 								<c:when test="${authUser.no eq vo.userNo }">
 									<td><a
-										href="${pageContext.request.contextPath }/board?a=delete&no=${vo.no }"
+										href="${pageContext.request.contextPath }/board/delete?no=${vo.no }"
 										class="del">삭제</a></td>
 								</c:when>
 								<c:otherwise>
@@ -76,9 +76,9 @@
 						<c:forEach begin="${paging.beginPage}"
 								end="${paging.endPage}" step="1" var="index">
 								<c:choose>
-									<c:when test="${paging.page==index}"><li class="selected"> ${index}</li></c:when>
+									<c:when test="${paging.page==index}"><li class="selected"> ${index }</li></c:when>
 									<c:otherwise>
-										<li><a href="${pageContext.request.contextPath }/board?page=${index}">${index}</a></li>
+										<li><a href="${pageContext.request.contextPath }/board?page=${index }">${index }</a></li>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
@@ -95,7 +95,7 @@
 						<c:when test="${empty authUser }">
 						</c:when>
 						<c:otherwise>
-							<a href="${pageContext.request.contextPath }/board?a=writeform"
+							<a href="${pageContext.request.contextPath }/board/write"
 								id="new-book">글쓰기</a>
 						</c:otherwise>
 					</c:choose>
