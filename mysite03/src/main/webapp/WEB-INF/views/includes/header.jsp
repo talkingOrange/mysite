@@ -12,9 +12,11 @@
 					<li><a href="${pageContext.request.contextPath }/user/join">회원가입</a><li>
 				</c:when>
 				<c:otherwise>
+					<c:if test="${authUser.role eq 'ADMIN'}">
+    <li><a href="${pageContext.request.contextPath }/admin">관리자페이지</a><li>
+</c:if>
 					<li><a href="${pageContext.request.contextPath }/user/update">회원정보수정</a><li>
 					<li><a href="${pageContext.request.contextPath }/user/logout">로그아웃</a><li>
-					
 					<li>${authUser.name } 님 안녕하세요 ^^;</li>
 				</c:otherwise>
 			</c:choose>

@@ -41,6 +41,7 @@
 			<mvc:exclude-mapping path="/assets/**" />
 			<mvc:exclude-mapping path="/user/auth" />
 			<mvc:exclude-mapping path="/user/logout" />
+			<mvc:exclude-mapping path="/user/update" />
 			<bean class="com.poscodx.mysite.security.AuthInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
