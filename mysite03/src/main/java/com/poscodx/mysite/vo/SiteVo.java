@@ -8,7 +8,6 @@ public class SiteVo {
 	private String description;
 	
 	public SiteVo() {
-		// TODO Auto-generated constructor stub
 	}
 	
 
