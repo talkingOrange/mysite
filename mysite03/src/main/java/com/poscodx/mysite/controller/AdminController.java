@@ -3,6 +3,7 @@ package com.poscodx.mysite.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -21,18 +22,19 @@ public class AdminController {
 	@Autowired
 	private FileUploadService fileUploadService;
 
-	@RequestMapping(value="", method=RequestMethod.GET)
+	@RequestMapping("")
 	public String main(Model model) {
 		SiteVo vo = siteService.getSite();
 		model.addAttribute("siteVo", vo);
+		System.out.println(vo);
 		return "admin/main";
 	}
 
-	@RequestMapping(value="/main/update", method=RequestMethod.POST)
+	@RequestMapping("/main/update")
 	public String update(SiteVo vo) {
-		System.out.println("vo 적용 전" + vo);
+		System.out.println(vo);
 		siteService.updateSite(vo);
-		System.out.println("vo 적용 후" + vo);
+		System.out.println(vo);
 		return "redirect:/admin";
 	}
 	

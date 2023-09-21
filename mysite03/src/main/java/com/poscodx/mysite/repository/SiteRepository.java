@@ -18,7 +18,6 @@ public class SiteRepository {
 
     
 	public void update(SiteVo vo) {
-		System.out.println("update의 " + vo);
 		sqlSession.update("site.update", vo);
 	}
 }

@@ -17,7 +17,6 @@ public class SiteService {
 	}
 	
 	public void updateSite(SiteVo vo) {
-		System.out.println("updateSite");
 		siteRepository.update(vo);
 	}
 	
