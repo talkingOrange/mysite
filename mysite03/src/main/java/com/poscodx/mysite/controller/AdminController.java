@@ -51,6 +51,7 @@ public class AdminController {
 		// vo.title를 ServletContext에 저장
 		servletContext.setAttribute("siteTitle", vo.getTitle()); // "siteTitle"로 저장
 		
+		System.out.println("admincontroller의 img file value check: "+vo.getProfile());
 		return "redirect:/admin";
 	}
 

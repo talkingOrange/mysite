@@ -16,7 +16,15 @@
 		<div id="wrapper">
 			<div id="content">
 				<div id="site-introduction">
-					<img id="profile" src="${pageContext.request.contextPath }${siteVo.profile }">
+					<c:choose>
+							<c:when test="${empty siteVo.profile }">
+								<img id="profile" src="${pageContext.request.contextPath }/assets/images/plain_profile.png"> 
+							</c:when>
+							<c:otherwise>
+								<img id="profile"
+									src="${pageContext.request.contextPath }${siteVo.profile }">
+							</c:otherwise>
+						</c:choose>
 					<h2>
 						${siteVo.welcome }
 					</h2>
