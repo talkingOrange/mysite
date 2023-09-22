@@ -23,6 +23,8 @@ public class GuestbookController {
 	public String main(Model model) {
 		List<GuestbookVo> list = guestbookService.getContentsList();
 		model.addAttribute("list", list);
+		
+		
 		return "guestbook/main";
 	}
 
