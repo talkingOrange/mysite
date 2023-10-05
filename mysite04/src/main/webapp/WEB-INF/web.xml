@@ -8,7 +8,7 @@
 	<!-- 컨테이너 만듦 -->
 	<context-param>
 		<param-name>contextClass</param-name>
-		<param-value>org.springframework.context.annotation.AnnotationConfigApplicationContext</param-value>
+		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
 	</context-param>
 	
 	<!-- bean을 만들 때, AppConfig 파일을 참고로 해서 만듦 -->
