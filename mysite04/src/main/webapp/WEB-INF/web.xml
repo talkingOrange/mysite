@@ -5,9 +5,16 @@
 	version="2.5">
 	<display-name>mysite04</display-name>
 
+	<!-- 컨테이너 만듦 -->
+	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>org.springframework.context.annotation.AnnotationConfigApplicationContext</param-value>
+	</context-param>
+	
+	<!-- bean을 만들 때, AppConfig 파일을 참고로 해서 만듦 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:applicationContext.xml</param-value>
+		<param-value>com.poscodx.mysite.config.AppConfig</param-value>
 	</context-param>
 
 	<!-- ContextLoad Listener -->
