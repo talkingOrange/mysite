@@ -11,13 +11,14 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.poscodx.mysite.config.web.MvcConfig;
+import com.poscodx.mysite.config.web.SecurityConfig;
 import com.poscodx.mysite.event.ApplicationContextEventListener;
 import com.poscodx.mysite.interceptor.SiteInterceptor;
 
 @Configuration
 @EnableAspectJAutoProxy
 @ComponentScan({"com.poscodx.mysite.controller", "com.poscodx.mysite.exception"})
-@Import({MvcConfig.class ,MessageSource.class})
+@Import({MvcConfig.class, SecurityConfig.class ,MessageSource.class})
 public class WebConfig implements WebMvcConfigurer{
 
 	//
