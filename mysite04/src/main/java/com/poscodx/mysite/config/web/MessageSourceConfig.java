@@ -7,13 +7,13 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 
 @Configuration
 public class MessageSourceConfig {
-	
+
 	@Bean
-	public MessageSource meesageSource() {
+	public MessageSource messageSource() {
 		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
 		messageSource.setBasenames("com/poscodx/mysite/config/web/messages/messages_ko", "com/poscodx/mysite/config/web/messages/messages_en");
-		messageSource.setDefaultEncoding("utf-8"); //default 값 설정되어 있어서 안 해줘도 상관 없음.
-		
+		messageSource.setDefaultEncoding("utf-8");
+
 		return messageSource;
 	}
 }
