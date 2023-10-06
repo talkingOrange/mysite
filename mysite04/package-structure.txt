@@ -31,8 +31,8 @@
  |     |     |     |    |     |     |-- board.xml
  |     |     |     |    |     |     |-- user.xml
  |     |     |     |-- /web
+ |     |     |     |    |-- /fileupload.properties
  |     |     |     |    |-- /messages
  |     |     |     |    |     |-- messages_ko.properties 
  
  
-com.poscodx.mysite.config.web.messages
