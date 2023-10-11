@@ -9,14 +9,11 @@ import com.poscodx.mysite.service.GalleryService;
 @Controller
 @RequestMapping("/gallery")
 public class GalleryController {
-	
 	@Autowired
 	private GalleryService galleryService;
 	
-
 	@RequestMapping("")
 	public String index() {
 		return "gallery/index";
 	}
-	
 }

@@ -9,15 +9,15 @@ import org.springframework.util.StopWatch;
 @Component
 @Aspect
 public class MeasureExecutionTimeAspect {
-	@Around("execution(* *..*.repository.*.*(..)) || execution(* *..*.service.*.*(..)) || execution(* *..*.controller.*.*(..))") //모든 레파지토리의 모든 메소드
-	public Object adviceAround(ProceedingJoinPoint pjp) throws Throwable{
-		//before
+	@Around("execution(* *..*.repository.*.*(..)) || execution(* *..*.service.*.*(..)) || execution(* *..*.controller.*.*(..))")
+	public Object adviceAround(ProceedingJoinPoint pjp) throws Throwable {
+		// before
 		StopWatch sw = new StopWatch();
 		sw.start();
 		
 		Object result = pjp.proceed();
 		
-		//after
+		// after
 		sw.stop();
 		long totalTime = sw.getTotalTimeMillis();
 		String className = pjp.getTarget().getClass().getName();
@@ -25,7 +25,7 @@ public class MeasureExecutionTimeAspect {
 		String taskName = className + "." + methodName;
 		
 		System.out.println("[Execution Time][" + taskName + "] " + totalTime + "mills");
-		
+
 		return result;
 	}
 }

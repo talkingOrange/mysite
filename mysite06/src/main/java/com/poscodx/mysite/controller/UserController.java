@@ -1,6 +1,5 @@
 package com.poscodx.mysite.controller;
 
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +41,6 @@ public class UserController {
 		userService.join(userVo);
 		return "redirect:/user/joinsuccess";
 	}
-	
-
 
 	@RequestMapping(value="/joinsuccess", method=RequestMethod.GET)
 	public String joinsuccess() {
@@ -72,16 +69,16 @@ public class UserController {
 		authUser.setName(userVo.getName());
 		return "redirect:/user/update";
 	}
-	
+
 	@RequestMapping("/auth")
 	public void auth() {
-		
-	}
-	@RequestMapping("/logout")
-	public void logout() {
-		
 	}
 
+	@RequestMapping("/logout")
+	public void logout() {
+	}
+	
+	
 //	@ExceptionHandler(Exception.class)
 //	public String handlerException() {
 //		return "error/exception";

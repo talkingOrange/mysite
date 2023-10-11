@@ -8,7 +8,6 @@ import com.poscodx.mysite.vo.UserVo;
 
 @Service
 public class UserService {
-	// 자바메일 보내기
 	// @Autowired
 	// private MailSender mailSender;
 
