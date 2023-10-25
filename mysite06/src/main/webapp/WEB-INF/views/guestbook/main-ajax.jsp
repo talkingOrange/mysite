@@ -11,6 +11,46 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.9.0.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+var render = function(vo, mode) {
+	var html = 
+		"<li data-no='" + vo.no + "'>" +
+		"<strong>" + vo.name + "</strong>" +
+		"<p>" + vo.contents + "</p>" +
+		"<strong></strong>" +
+		"<a href='#' data-no='" + vo.no + "'>삭제</a>" +
+	    "</li>"
+		    
+	$("#list-guestbook")[mode ? 'prepend' : 'append'](html);
+}
+
+$(function(){
+	$('#add-form').submit(function(event) {
+		event.preventDefault();
+		
+		var vo = {};
+		vo.name = $("#input-name").val();
+		vo.password = $("#input-password").val();
+		vo.contents = $("#tx-content").val();
+		
+		$.ajax({
+			url: '${pageContext.request.contextPath }/api/guestbook',
+			type: 'post',
+			dataType: 'json',
+			contentType: 'application/json',
+			data: JSON.stringify(vo),
+			success: function(response) {
+				if(response.result === 'fail') {
+					console.error(response.message);
+					return;
+				}
+				
+				render(response.data, true);
+			}
+		})
+	});
+});
+</script>
 </head>
 <body>
 	<div id="container">
