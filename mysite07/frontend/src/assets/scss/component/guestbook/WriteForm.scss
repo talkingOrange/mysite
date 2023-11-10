@@ -1,0 +1,54 @@
+.WriteForm {
+  width: 530px;
+  margin: 0 auto;
+
+  div {
+    display: flex;
+  }
+
+  h4 {
+    margin: 5px 0 0 0px;
+    padding-right: 7px;
+  }
+
+  input[type="text"] {
+    margin-right: 18px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  textarea,
+  input[type="submit"] {
+    display: block;
+    outline: none;
+    border: 1px solid #d4caca;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 38%;
+  }
+
+  textarea {
+    margin-top: 5px;
+    resize: none;
+    height: 80px;
+    width: 518px;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    background-color: #fff;
+    font-weight: bold;
+    color: #846b5c;
+    cursor: pointer;
+    width: 529px;
+
+    &:hover {
+      background-color: #65b791;
+      color: #fff;
+    }
+  }
+}
