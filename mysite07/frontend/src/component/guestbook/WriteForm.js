@@ -1,22 +1,36 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "../../assets/scss/component/guestbook/WriteForm.scss";
 
-function WriteForm(props) {
+function WriteForm({ addMessage }) {
+  const refForm = useRef(null);
   return (
-    <div className={styles.WriteForm}>
-      <form>
-        <div>
-          <h4>이름</h4>
-          <input type="text" name="name" />
+    <form
+      className={styles.WriteForm}
+      ref={refForm}
+      onSubmit={(e) => {
+        e.preventDefault();
 
-          <h4>비밀번호</h4>
-          <input type="password" />
-        </div>
+        const message = {
+          name: e.target.name.value,
+          password: e.target.password.value,
+          contents: e.target.contents.value,
+        };
 
-        <textarea name="contents" id="content"></textarea>
-        <input type="submit" value=" 확인 " />
-      </form>
-    </div>
+        addMessage(message);
+        refForm.current.reset();
+      }}
+    >
+      <div>
+        <h4>이름</h4>
+        <input type="text" name="name" />
+
+        <h4>비밀번호</h4>
+        <input type="password" name="password" />
+      </div>
+
+      <textarea name="contents"></textarea>
+      <input type="submit" value=" 확인 " />
+    </form>
   );
 }
 

@@ -11,7 +11,7 @@ function MessageList({ messages }) {
           key={message.no}
           name={message.name}
           contents={message.contents}
-          regDate={message.reg_date}
+          regDate={message.regDate}
         />
       ))}
     </div>
